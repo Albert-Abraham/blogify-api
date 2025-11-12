@@ -18,7 +18,8 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Blogify API listening on port ${PORT}`);
+  console.log(`Blogify API listening on port http://localhost:${PORT}`);
+  
 });
 
 module.exports = server; // exported for testing or further composition
