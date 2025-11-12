@@ -1,7 +1,7 @@
 {
-  "name": "blogify-api",
+  "name": "blogify",
   "version": "1.0.0",
-  "description": "Blogify API - initial setup",
+  "description": "Blogify API - initial project setup",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
