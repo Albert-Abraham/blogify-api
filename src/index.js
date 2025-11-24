@@ -1,25 +1,19 @@
-const http = require('http');
-const PORT = process.env.PORT || 5000;
+// src/index.js
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const { getHealth } = require('./controllers/healthController');
-const { format } = require('./utils/exampleUtil');
+// Import the post router
+const postRouter = require('./routes/posts.routes.js');
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/health') {
-    const payload = getHealth();
-    const body = format(payload);
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    return res.end(body);
-  }
-
-  const body = format({ message: 'Welcome to Blogify API (initial setup)' });
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(body);
+// Main welcome route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Blogify API!');
 });
 
-server.listen(PORT, () => {
-  console.log(`Blogify API listening on port http://localhost:${PORT}`);
-  
-});
+// Mount the router at /api/v1/posts
+app.use('/api/v1/posts', postRouter);
 
-module.exports = server; // exported for testing or further composition
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}/`);
+});
