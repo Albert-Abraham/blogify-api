@@ -11,8 +11,6 @@ router.get('/', postsController.getAllPosts);
 router.get('/:postId', postsController.getPostById);
 
 // POST /api/v1/posts/
-router.post('/', (req, res) => {
-  res.send('Creating a new blog post...');
-});
+router.post('/', postsController.createPost);
 
 module.exports = router;
